@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  padding-left: 15px !important;
+}
+.mat-expansion-indicator {
+  position: absolute;
+  left: 15px;
+  top: 12;
+}
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-grow: 1 !important;
+  text-align: center !important;
+  display: block !important;
+}

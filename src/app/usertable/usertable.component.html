@@ -1,0 +1,56 @@
+<div class="container">
+  <button class="btn btn-primary mt-5" (click)="redirectToHome()">Home Page</button>
+  <div class="col-12 mx-auto px-4 my-3">
+    <div class="row mx-0">
+      <div class="col-3 text-center"><strong>Column 1</strong></div>
+      <div class="col-3 text-center"><strong>Column 2</strong></div>
+      <div class="col-3 text-center"><strong>Column 3</strong></div>
+      <div class="col-3 text-center"><strong>Column 4</strong></div>
+    </div>
+  </div>
+
+  <hr>
+
+  <mat-accordion>
+    <ng-container *ngFor="let record of dummyRecords; let i = index">
+      <mat-expansion-panel (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ record.id }}
+          </mat-panel-title>
+          <mat-panel-title>
+            {{ record.name }}
+          </mat-panel-title>
+          <mat-panel-title>
+            {{ record.age }}
+          </mat-panel-title>
+          <mat-panel-title>
+            {{ record.country }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <input type="number" min="1" placeholder="ID" [(ngModel)]="tempRecords[i].id"
+          (input)="updateSaveButtonState(i)">
+        <input type="text" placeholder="Name" [(ngModel)]="tempRecords[i].name" (input)="updateSaveButtonState(i)">
+        <input type="number" min="1" placeholder="Age" [(ngModel)]="tempRecords[i].age"
+          (input)="updateSaveButtonState(i)">
+        <input type="text" placeholder="Country" [(ngModel)]="tempRecords[i].country"
+          (input)="updateSaveButtonState(i)">
+
+        <div class="row">
+          <div class="col-2 mt-3">
+            <button class="btn btn-primary w-100" (click)="saveChanges(i)" [disabled]="updateSaveButtonState(i)">
+              <span *ngIf="isLoading"><img src="assets/loading.gif" width="20" height="20"></span>
+              <span *ngIf="!isLoading">SAVE</span>
+            </button>
+          </div>
+          <div class="col-2 mt-3">
+            <button class="btn btn-primary w-100" (click)="cancelChanges(i)">CANCEL</button>
+          </div>
+        </div>
+
+
+      </mat-expansion-panel>
+    </ng-container>
+  </mat-accordion>
+</div>
